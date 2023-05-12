@@ -30,6 +30,7 @@ def wait_click(xpath_location):
     WDW(driver,25).until(EC.visibility_of_element_located((By.XPATH,xpath_location))).click()
 
 wait_click("//*[@title = 'Sign In']")
+WDW(driver, 25).until(EC.visibility_of_element_located((By.XPATH, "//*[@id='account-menu-toggle']")))
 print("The title of the page is " + driver.title)
 try:
     title = driver.title
@@ -38,6 +39,7 @@ try:
 except Exception as e:
     print('Assertion test failed - Live dashboard did not open', format(e))
 driver.get("https://live.browserstack.com/dashboard")
+WDW(driver, 25).until(EC.visibility_of_element_located((By.XPATH, "//*[@id='automate_cross_product_explore']")))
 print("The title of the page now is " + driver.title)
 try:
     title = driver.title
@@ -48,12 +50,55 @@ except Exception as e:
 wait_click("//*[div[contains(text(),'mac')]]")
 wait_click("//*[@aria-label='Big Sur']")
 wait_click("//*[@aria-label='chrome 113 latest']")
-
 try:
-    wait_click("//*[label[contains(text(),'Stop Session')]]")
-    print("successfully logged into bstack live")
+    WDW(driver,10).until(EC.visibility_of_element_located((By.XPATH,'//*[@id="lft-modal-upgrade"]')))
+    print("Expired my trial limits for this browser")
 except Exception as e:
-    print("Error : {} ".format(e))
+    print("Errored out at modal check : {} ".format(e))
+try:
+    WDW(driver, 25).until(
+        EC.visibility_of_element_located((By.XPATH, "//*[label[contains(text(),'Stop Session')]]"))).click()
+    print("Successfully logged into Live Dashboard and exited")
+    driver.quit()
+
+except Exception as e:
+    print("Could not find Stop session due to some reason")
+    print("Error final : {} ".format(e))
+try:
+    WDW(driver, 25).until(
+        EC.invisibility_of_element_located((By.XPATH, "//*[label[contains(text(),'Stop Session')]]")))
+    print("Could not login to Live as trial expired")
+
+except Exception as e:
+    print("Could not login to Live due to error or driver quitted")
+    print("Error final : {} ".format(e))
 driver.quit()
+
+
+# print("The title of the page is " + driver.title)
+# try:
+#     title = driver.title
+#     assert 'Dashboard' in title
+#     print('Assertion test passed - Live Dashboard has opened')
+# except Exception as e:
+#     print('Assertion test failed - Live dashboard did not open', format(e))
+# driver.get("https://live.browserstack.com/dashboard")
+# print("The title of the page now is " + driver.title)
+# try:
+#     title = driver.title
+#     assert 'Dashboard' in title
+#     print('Assertion test passed - Live Dashboard has opened')
+# except Exception as e:
+#     print('Assertion test failed - Live dashboard did not open', format(e))
+# wait_click("//*[div[contains(text(),'mac')]]")
+# wait_click("//*[@aria-label='Big Sur']")
+# wait_click("//*[@aria-label='chrome 113 latest']")
+#
+# try:
+#     wait_click("//*[label[contains(text(),'Stop Session')]]")
+#     print("successfully logged into bstack live")
+# except Exception as e:
+#     print("Error : {} ".format(e))
+# driver.quit()
 
 
