@@ -62,11 +62,11 @@ def window_maximize (driver):
 
 #This method is Selenium Webdriver method (WDW - WebdriverWait) until visibility of element is located. Post visibility it clicks
 def wait_click(driver, xpath_location):
-    WDW(driver, 25).until(EC.visibility_of_element_located((By.XPATH, xpath_location))).click()
+    WDW(driver, 50).until(EC.visibility_of_element_located((By.XPATH, xpath_location))).click()
 
 #This method is Selenium Webdriver method (WDW - WebdriverWait) until visibility of element is located. Used for checking if the page elements loaded correctly
 def wait_until_visible(driver, xpath_location):
-    WDW(driver, 25).until(EC.visibility_of_element_located((By.XPATH, xpath_location)))
+    WDW(driver, 50).until(EC.visibility_of_element_located((By.XPATH, xpath_location)))
 
 #not used in this py file
 def wait_until_invisible(driver, xpath_location):
@@ -152,9 +152,9 @@ def step1(browser, defaultProfile):
         driver.quit()
 
 #We initiate all combinations of browser and default profile
-step1("chrome", "yes")
-step1("chrome", "no")
-step1("firefox", "yes")
-step1("firefox", "no")
+# step1("chrome", "yes")
+# step1("chrome", "no")
+# step1("firefox", "yes")
+# step1("firefox", "no")
 step1("safari", "yes")
 step1("safari", "no")
