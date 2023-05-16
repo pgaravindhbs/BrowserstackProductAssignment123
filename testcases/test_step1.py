@@ -12,6 +12,8 @@ from selenium.webdriver.support.wait import WebDriverWait as WDW
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains as AC
 
+username_text = os.environ.get("browserstacktempusername1")
+password_text = os.environ.get("browserstacktemppassword1")
 
 #Setting up Browsers basis Browser name and whether to load default profile or not. Loading default profile will bypass 2FA. If not this, then dummy business email/password is used to bypass 2FA
 def setup_browser_driver(browser, defaultProfile):
@@ -77,11 +79,11 @@ def login_bstack(driver):
     actions = AC(driver)
     username_location = driver.find_element(By.XPATH, "//*[@id='user_email_login']")
     username_location.clear()
-    username_text = os.environ.get("browserstacktempusername1")
+    # username_text = os.environ.get("browserstacktempusername1")
     actions.move_to_element(username_location).click().send_keys(username_text).perform()
     password_location = driver.find_element(By.XPATH, "//*[@id='user_password']")
     password_location.clear()
-    password_text = os.environ.get("browserstacktemppassword1")
+    # password_text = os.environ.get("browserstacktemppassword1")
     actions.move_to_element(password_location).click().send_keys(password_text).perform()
     driver.find_element(By.XPATH, "//*[@value='Sign me in']").click()
     print("logged in")
