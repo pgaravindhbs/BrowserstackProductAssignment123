@@ -152,9 +152,9 @@ def step1(browser, defaultProfile):
         driver.quit()
 
 #We initiate all combinations of browser and default profile
-# step1("chrome", "yes")
-# step1("chrome", "no")
-# step1("firefox", "yes")
-# step1("firefox", "no")
+step1("chrome", "yes")
+step1("chrome", "no")
+step1("firefox", "yes")
+step1("firefox", "no")
 step1("safari", "yes")
 step1("safari", "no")
