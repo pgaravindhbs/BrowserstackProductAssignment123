@@ -21,6 +21,7 @@ BROWSERSTACK_USERNAME = os.environ.get(
 BROWSERSTACK_ACCESS_KEY = os.environ.get(
     "BROWSERSTACK_ACCESS_KEY")
 URL = os.environ.get("URL") or "https://hub.browserstack.com/wd/hub"
+time_now = time.time()
 
 capabilities = [
     {
@@ -104,7 +105,7 @@ def login_bstack(driver):
 def run_session(cap):
     bstack_options = {
         "osVersion": cap["osVersion"],
-        "buildName": cap["buildName"] + str(time.time()),
+        "buildName": cap["buildName"] + str(time_now),
         "sessionName": cap["sessionName"],
         "userName": BROWSERSTACK_USERNAME,
         "accessKey": BROWSERSTACK_ACCESS_KEY,
