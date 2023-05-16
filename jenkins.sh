@@ -1,4 +1,4 @@
 source $HOME/.zshrc
 echo $browserstackpermanentusername
-export $browserstackpermanentusername = $browserstackpermanentusername
+export $browserstackpermanentusername
 echo $browserstackpermanentusername
