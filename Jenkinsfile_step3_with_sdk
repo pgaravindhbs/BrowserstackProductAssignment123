@@ -15,7 +15,7 @@ pipeline {
         stage('Execute Step 2') {
             steps {
 
-                sh 'browserstack python testcases/test_step3_with_sdk_new.py'
+                sh 'browserstack-sdk python testcases/test_step3_with_sdk_new.py'
                 
             
             }
