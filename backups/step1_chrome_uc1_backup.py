@@ -74,6 +74,12 @@ except Exception as e:
     print("Error final : {} ".format(e))
 driver.quit()
 
+# try:
+#     wait_until_invisible(driver, "//*[label[contains(text(),'Stop Session')]]")
+#     print("Could not login to Live as trial expired")
+# except Exception as e:
+#     print("Could not login to Live due to error or driver quitted")
+#     print("Error final : {} ".format(e))
 
 # print("The title of the page is " + driver.title)
 # try:
