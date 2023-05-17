@@ -76,10 +76,10 @@ WDW(driver,30).until(EC.visibility_of_element_located((By.XPATH,"//*[@aria-label
 
 try:
     #The below blocks check if the browser is disabled. The browsers get disabled for trial accounts. We check if the modal-upgrade appears that mentions that the trial is over. We close our test case loop then and there
-    if (driver.find_element(By.XPATH, "//*[@aria-label='chrome 110 ']").get_attribute(
+    if (driver.find_element(By.XPATH, "//*[@aria-label='chrome 111 ']").get_attribute(
                 "class") == "browser-version-list__element browser-version-list__element--disabled" or driver.find_element(By.XPATH, "//*[@aria-label='chrome 110 ']").get_attribute(
             "class") == "browser-version-list__element browser-version-list__element--selected browser-version-list__element--disabled"):
-        WDW(driver, 30).until(EC.visibility_of_element_located((By.XPATH,"//*[@aria-label='chrome 110 ']"))).click()
+        WDW(driver, 30).until(EC.visibility_of_element_located((By.XPATH,"//*[@aria-label='chrome 111 ']"))).click()
         if driver.find_elements(By.XPATH, "//*[@id='lft-modal-upgrade']"):
             print("Expired my trial limits for this browser and hence exiting the test case")
             driver.execute_script(
@@ -89,7 +89,7 @@ try:
             exit()
 
     #For first time browsers or for browserstack official logins, we wait until the toolbar drag button is visible and then we stop session
-    WDW(driver,30).until(EC.visibility_of_element_located((By.XPATH,"//*[@aria-label='chrome 110 ']"))).click()
+    WDW(driver,30).until(EC.visibility_of_element_located((By.XPATH,"//*[@aria-label='chrome 111 ']"))).click()
     WDW(driver,30).until(EC.visibility_of_element_located((By.XPATH,"//*[@aria-label='toolbar drag button']")))
     if driver.find_elements(By.XPATH,"//*[label[contains(text(),'Stop Session')]]") or WDW(driver,30).until(EC.visibility_of_element_located((By.XPATH,"//*[label[contains(text(),'Stop Session')]]"))):
         WDW(driver,30).until(EC.visibility_of_element_located((By.XPATH, "//*[label[contains(text(),'Stop Session')]]"))).click()
